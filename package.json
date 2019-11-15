@@ -4,5 +4,9 @@
   "description": "Set up a bunch of objects with different attribute values",
   "main": "index.js",
   "author": "Pablo Villacañas",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "^6.2.2",
+    "yarn": "^1.19.1"
+  }
 }
