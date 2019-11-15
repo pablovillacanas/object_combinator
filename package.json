@@ -1,16 +1,26 @@
 {
   "name": "combinatory_testing",
-  "version": "0.0.1",
-  "description": "Set up a bunch of objects with different attribute values",
+  "version": "1.0.0",
+  "description": "Generator of limit cases for testing objects",
   "main": "index.js",
-  "author": "Pablo Villacañas",
-  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
   "dependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.2.2",
     "yarn": "^1.19.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.2"
   },
   "scripts": {
     "test": "mocha"
-  }
+  },
+  "keywords": [
+    "test",
+    "json",
+    "rest"
+  ],
+  "author": "Pablo Villacañas",
+  "license": "ISC"
 }
