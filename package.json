@@ -1,0 +1,8 @@
+{
+  "name": "combinatory_testing",
+  "version": "0.0.1",
+  "description": "Set up a bunch of objects with different attribute values",
+  "main": "index.js",
+  "author": "Pablo Villacañas",
+  "license": "MIT"
+}
