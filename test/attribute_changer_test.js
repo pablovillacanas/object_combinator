@@ -1,21 +1,35 @@
 let changer = require('../src/combinator/attribute_generator')
 var expect = require('chai').expect;
-var pet = { name: "Dogo" };
 
 describe('Create combinations of attributes', function () {
 
-    let pets = [];
-    let expected_pets = [{ name: "Dogo" }, { name: "" }, { name: 1 }, { name: null }];
+    describe('With only one string attribute', function () {
+        var pet = { name: "Dogo" };
+        let pets = [];
 
-    before(() =>
-        pets = changer(pet)
-    )
+        before(function () {
+            pets = changer(pet)
+        })
 
-    it("Generated 4 possibilities for a pet", function () {
-        expect(pets).to.be.an('array').and.to.have.lengthOf(4)
+        it('Generated 4 possibilities for a pet', function () {
+            let expected_pets = [{ name: "Dogo" }, { name: "" }, { name: 1 }, { name: null }];
+            expect(pets).to.be.an('array').and.to.have.lengthOf(4)
+            expect(pets).to.deep.equal(expected_pets)
+        })
     })
 
-    it("Generated 4 different possibilities", function () {
-        expect(pets).to.deep.equal(expected_pets)
+    describe('With only one number attribute', function () {
+        var pet = { age: 2 };
+        let pets = [];
+
+        before(() =>
+            pets = changer(pet)
+        )
+
+        it('Generated 4 possibilities for a pet', function () {
+            let expected_pets = [{ age: 2 }, { age: "" }, { age: "1" }, { age: null }];
+            expect(pets).to.be.an('array').and.to.have.lengthOf(4)
+            expect(pets).to.deep.equal(expected_pets)
+        })
     })
 })

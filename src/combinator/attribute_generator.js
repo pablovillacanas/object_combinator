@@ -1,10 +1,11 @@
-const posibilities = ["", 1, null]
-let generated_objects = []
+const string_posibilities = ["", 1, null]
+const number_posibilities = ["", "1", null]
 
 function isObject(obj) {
     var type = typeof obj;
     return type === 'function' || type === 'object' && !!obj;
 };
+
 function iterationCopy(src) {
     let target = {};
     for (let prop in src) {
@@ -21,11 +22,20 @@ function iterationCopy(src) {
 }
 
 changer = (obj) => {
+    let generated_objects = []
     generated_objects.push(obj)
     for (var attr in obj) {
-        //if type string
+        let posibilities;
+        switch (typeof obj[attr]) {
+            case 'string':
+                posibilities = string_posibilities;
+                break;
+            case 'number':
+                posibilities = number_posibilities;
+                break;
+        }
         for (var posibility of posibilities.values()) {
-            let copy = iterationCopy(posibility)
+            let copy = iterationCopy(obj)
             copy[attr] = posibility
             generated_objects.push(copy)
         }
