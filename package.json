@@ -1,26 +1,28 @@
 {
-  "name": "combinatory_testing",
-  "version": "1.0.0",
-  "description": "Generator of limit cases for testing objects",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {
-    "chai": "^4.2.0",
-    "yarn": "^1.19.1"
-  },
-  "devDependencies": {
-    "mocha": "^6.2.2"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "keywords": [
-    "test",
-    "json",
-    "rest"
-  ],
-  "author": "Pablo Villacañas",
-  "license": "ISC"
+	"name": "combinatory_testing",
+	"version": "1.0.0",
+	"description": "Generator of limit cases for testing objects",
+	"main": "index.js",
+	"directories": {
+		"test": "test"
+	},
+	"type": "module",
+	"dependencies": {
+		"chai": "^4.2.0",
+		"yarn": "^1.19.1"
+	},
+	"devDependencies": {
+		"mocha": "^6.2.2"
+	},
+	"scripts": {
+		"run": "node --experimental-modules index.js",
+		"test": "mocha"
+	},
+	"keywords": [
+		"test",
+		"json",
+		"rest"
+	],
+	"author": "Pablo Villacañas",
+	"license": "ISC"
 }

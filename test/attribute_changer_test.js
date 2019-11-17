@@ -1,10 +1,21 @@
-let changer = require('../src/combinator/attribute_generator') 
+let changer = require('../src/combinator/attribute_generator')
 var expect = require('chai').expect;
-var pet = {name: "Dogo"};
+var pet = { name: "Dogo" };
 
-describe('Create combinations of attributes', function() {
+describe('Create combinations of attributes', function () {
 
-    it("Generated 4 possibilities", function() {    
-        expect(changer(pet)).to.be.an('array')
+    let pets = [];
+    let expected_pets = [{ name: "Dogo" }, { name: "" }, { name: 1 }, { name: null }];
+
+    before(() =>
+        pets = changer(pet)
+    )
+
+    it("Generated 4 possibilities for a pet", function () {
+        expect(pets).to.be.an('array').and.to.have.lengthOf(4)
+    })
+
+    it("Generated 4 different possibilities", function () {
+        expect(pets).to.deep.equal(expected_pets)
     })
 })
