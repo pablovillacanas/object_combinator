@@ -2,6 +2,7 @@ const string_possibilities = ["", 1, null]
 const number_possibilities = ["", "1", null]
 const boolean_possibilities = ["", "false", null]
 const obj_possibilities = ["", {}, null]
+const array_possibilities = ["", [], null]
 
 function isObject(obj) {
     var type = typeof obj;
@@ -39,7 +40,12 @@ changer = (obj) => {
                 possibilities = boolean_possibilities;
                 break;
             case 'object':
-                possibilities = obj_possibilities;
+                try {
+                    obj[attr].sort();
+                    possibilities = array_possibilities;
+                } catch{
+                    possibilities = obj_possibilities;
+                }
                 break;
         }
         for (var possibility of possibilities.values()) {

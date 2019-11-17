@@ -63,4 +63,20 @@ describe('Create combinations of attributes', function () {
             expect(pets).to.deep.equal(expected_pets)
         })
     })
+
+    describe('With only one array attribute', function () {
+        const children = ['Max', 'Deb'];
+        var pet = { childs: children };
+        let pets = [];
+
+        before(function () {
+            pets = changer(pet)
+        })
+
+        it('Generated 4 possibilities for a pet', function () {
+            let expected_pets = [{ childs: children }, { childs: "" }, { childs: [] }, { childs: null }];
+            expect(pets).to.be.an('array').and.to.have.lengthOf(4)
+            expect(pets).to.deep.equal(expected_pets)
+        })
+    })
 })
