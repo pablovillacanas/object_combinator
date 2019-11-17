@@ -47,4 +47,20 @@ describe('Create combinations of attributes', function () {
             expect(pets).to.deep.equal(expected_pets)
         })
     })
+
+    describe('With only one object attribute', function () {
+        const now = new Date();
+        var pet = { birthday: now };
+        let pets = [];
+
+        before(function () {
+            pets = changer(pet)
+        })
+
+        it('Generated 4 possibilities for a pet', function () {
+            let expected_pets = [{ birthday: now }, { birthday: "" }, { birthday: {} }, { birthday: null }];
+            expect(pets).to.be.an('array').and.to.have.lengthOf(4)
+            expect(pets).to.deep.equal(expected_pets)
+        })
+    })
 })
