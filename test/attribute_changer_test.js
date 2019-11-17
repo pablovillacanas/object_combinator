@@ -32,4 +32,19 @@ describe('Create combinations of attributes', function () {
             expect(pets).to.deep.equal(expected_pets)
         })
     })
+
+    describe('With only one boolean attribute', function () {
+        var pet = { death: false };
+        let pets = [];
+
+        before(() =>
+            pets = changer(pet)
+        )
+
+        it('Generated 4 possibilities for a pet', function () {
+            let expected_pets = [{ death: false }, { death: "" }, { death: "false" }, { death: null }];
+            expect(pets).to.be.an('array').and.to.have.lengthOf(4)
+            expect(pets).to.deep.equal(expected_pets)
+        })
+    })
 })

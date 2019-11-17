@@ -1,5 +1,6 @@
-const string_posibilities = ["", 1, null]
-const number_posibilities = ["", "1", null]
+const string_possibilities = ["", 1, null]
+const number_possibilities = ["", "1", null]
+const boolean_possibilities = ["", "false", null]
 
 function isObject(obj) {
     var type = typeof obj;
@@ -25,18 +26,21 @@ changer = (obj) => {
     let generated_objects = []
     generated_objects.push(obj)
     for (var attr in obj) {
-        let posibilities;
+        let possibilities;
         switch (typeof obj[attr]) {
             case 'string':
-                posibilities = string_posibilities;
+                possibilities = string_possibilities;
                 break;
             case 'number':
-                posibilities = number_posibilities;
+                possibilities = number_possibilities;
+                break;
+            case 'boolean':
+                possibilities = boolean_possibilities;
                 break;
         }
-        for (var posibility of posibilities.values()) {
+        for (var possibility of possibilities.values()) {
             let copy = iterationCopy(obj)
-            copy[attr] = posibility
+            copy[attr] = possibility
             generated_objects.push(copy)
         }
     }
