@@ -2,20 +2,37 @@ const string_possibilities = ["", 1, null]
 const number_possibilities = ["", "1", null]
 const boolean_possibilities = ["", "false", null]
 const obj_possibilities = ["", {}, null]
+const date_possibilities = ["", null]
 const array_possibilities = ["", [], null]
 
-function isObject(obj) {
-    var type = typeof obj;
-    return type === 'function' || type === 'object' && !!obj;
-};
+function getType(attr) {
+    if (typeof attr.__proto__.sort === 'function') {
+        return 'array'
+    }
+    else if (typeof attr.__proto__.getMonth === 'function') {
+        return 'date'
+    }
+    else {
+        return 'object'
+    }
+}
 
 function iterationCopy(src) {
     let target = {};
     for (let prop in src) {
         if (src.hasOwnProperty(prop)) {
-            // if the value is a nested object, recursively copy all it's properties
-            if (isObject(src[prop])) {
-                target[prop] = iterationCopy(src[prop]);
+            if (typeof (src[prop]) === 'object') {
+                switch (getType(src[prop])) {
+                    case 'array':
+                        target[prop] = prop.slice()
+                        break
+                    case 'date':
+                        target[prop] = prop.name
+                        break;
+                    case 'object':
+                        iterationCopy(src[prop])
+                        break;
+                }
             } else {
                 target[prop] = src[prop];
             }
@@ -40,11 +57,16 @@ changer = (obj) => {
                 possibilities = boolean_possibilities;
                 break;
             case 'object':
-                try {
-                    obj[attr].sort();
-                    possibilities = array_possibilities;
-                } catch{
-                    possibilities = obj_possibilities;
+                switch (getType(obj[attr])) {
+                    case 'array':
+                        possibilities = array_possibilities;
+                        break
+                    case 'date':
+                        possibilities = date_possibilities;
+                        break;
+                    default:
+                        possibilities = obj_possibilities;
+                        break;
                 }
                 break;
         }
@@ -57,4 +79,4 @@ changer = (obj) => {
     return generated_objects;
 }
 
-module.exports = changer 
+module.exports.changer = changer; 
