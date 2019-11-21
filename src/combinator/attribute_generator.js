@@ -44,7 +44,7 @@ const iterationCopy = (src) => {
     return target;
 }
 
-const changer = (obj) => {
+const generator = (obj) => {
     let generated_objects = []
     generated_objects.push(obj)
     for (var attr in obj) {
@@ -81,5 +81,5 @@ const changer = (obj) => {
     return generated_objects;
 }
 
-module.exports.changer = changer;
+module.exports.generator = generator;
 module.exports.stringIsADateFormat = stringIsADateFormat;
