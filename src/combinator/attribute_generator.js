@@ -7,14 +7,14 @@ const array_possibilities = ["", [], null]
 
 const timezoneFormats = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/; //2018-10-17T13:34:15.226Z
 
-function stringIsADateFormat(string) {
+const stringIsADateFormat = (string) => {
     if (string.match(timezoneFormats)) {
         return true;
     }
     return false
 }
 
-function getType(attr) {
+const getType = (attr) => {
     if (typeof attr.__proto__.sort === 'function') {
         return 'array'
     }
@@ -23,7 +23,7 @@ function getType(attr) {
     }
 }
 
-function iterationCopy(src) {
+const iterationCopy = (src) => {
     let target = {};
     for (let prop in src) {
         if (src.hasOwnProperty(prop)) {
@@ -44,7 +44,7 @@ function iterationCopy(src) {
     return target;
 }
 
-changer = (obj) => {
+const changer = (obj) => {
     let generated_objects = []
     generated_objects.push(obj)
     for (var attr in obj) {
