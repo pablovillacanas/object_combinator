@@ -23,6 +23,21 @@ const getType = (attr) => {
     }
 }
 
+const generateObjectsWithoutRequiredAttributes = (obj, required_attrs) => {
+    let generated_objects = []
+    for (let required_attr of required_attrs) {
+        let copy = iterationCopy(obj)
+        delete copy[required_attr];
+        generated_objects.push(copy)
+    }
+    let copy = iterationCopy(obj)
+    for (let required_attr of required_attrs) {
+        delete copy[required_attr]
+    }
+    generated_objects.push(copy)
+    return generated_objects;
+}
+
 const iterationCopy = (src) => {
     let target = {};
     for (let prop in src) {
@@ -83,3 +98,4 @@ const generator = (obj) => {
 
 module.exports.generator = generator;
 module.exports.stringIsADateFormat = stringIsADateFormat;
+module.exports.generateObjectsWithoutRequiredAttributes = generateObjectsWithoutRequiredAttributes;

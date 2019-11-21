@@ -1,4 +1,4 @@
-const generator = require("./src/combinator/attribute_generator.js").generator;
+const generator = require("src/combinator/object_generator.js").generator;
 var pet = {
 	name: "Dogo",
 	age: 2,

@@ -1,4 +1,4 @@
-const changer = require("../src/combinator/attribute_generator.js").changer;
+const generator = require("../src/combinator/object_generator.js").generator;
 var expect = require('chai').expect;
 
 describe('Create combinations with', function () {
@@ -8,7 +8,7 @@ describe('Create combinations with', function () {
         let pets = [];
 
         before(function () {
-            pets = changer(pet)
+            pets = generator(pet)
         })
 
         it('Generated 4 possibilities for a pet', function () {
@@ -23,7 +23,7 @@ describe('Create combinations with', function () {
         let pets = [];
 
         before(() =>
-            pets = changer(pet)
+            pets = generator(pet)
         )
 
         it('Generated 4 possibilities for a pet', function () {
@@ -38,7 +38,7 @@ describe('Create combinations with', function () {
         let pets = [];
 
         before(() =>
-            pets = changer(pet)
+            pets = generator(pet)
         )
 
         it('Generated 4 possibilities for a pet', function () {
@@ -53,7 +53,7 @@ describe('Create combinations with', function () {
         let pets = [];
 
         before(function () {
-            pets = changer(pet)
+            pets = generator(pet)
         })
 
         it('Generated 4 possibilities for a pet', function () {
@@ -68,7 +68,7 @@ describe('Create combinations with', function () {
         let pets = [];
 
         before(function () {
-            pets = changer(pet)
+            pets = generator(pet)
         })
 
         it('Generated 3 possibilities for a pet', function () {
@@ -83,7 +83,7 @@ describe('Create combinations with', function () {
         let pets = [];
 
         before(function () {
-            pets = changer(pet)
+            pets = generator(pet)
         })
 
         it('Generated 4 possibilities for a pet', function () {
@@ -105,13 +105,13 @@ describe('Create combinations with', function () {
         let pets = [];
 
         before(function () {
-            pets = changer(pet)
+            pets = generator(pet)
         })
 
         it('Generated 20 possibilities for a pet', function () {
-            let expected_pets = require('./obj_drawer/pet_combinations')
+            let expected_pets = require('./obj_drawer/pet_combinations').pet_combinations
             expect(pets).to.be.an('array').and.to.have.lengthOf(3 * 5 + 1 + 2)
-            expect(pets).to.deep.equal(expected_pets.pet_combinations)
+            expect(pets).to.deep.equal(expected_pets)
         })
     })
 })

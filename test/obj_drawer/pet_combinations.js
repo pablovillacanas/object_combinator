@@ -150,4 +150,28 @@ const pet_combinations = [
 		custom: null
 	}];
 
+const pet_compbinations_required_name_and_age = [
+	{
+		age: 2,
+		death: false,
+		birthday: "2018-10-17T13:34:15.226Z",
+		childs: ['Max', 'Deb'],
+		custom: { color: 'black' }
+	},
+	{
+		name: "Dogo",
+		death: false,
+		birthday: "2018-10-17T13:34:15.226Z",
+		childs: ['Max', 'Deb'],
+		custom: { color: 'black' }
+	},
+	{
+		death: false,
+		birthday: "2018-10-17T13:34:15.226Z",
+		childs: ['Max', 'Deb'],
+		custom: { color: 'black' }
+	}
+];
+
 exports.pet_combinations = pet_combinations;
+exports.pet_combinations_required = pet_compbinations_required_name_and_age;
