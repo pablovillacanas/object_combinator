@@ -49,8 +49,7 @@ describe('Create combinations with', function () {
     })
 
     describe('only one array attribute', function () {
-        const children = ['Max', 'Deb'];
-        var pet = { childs: children };
+        var pet = { childs: ['Max', 'Deb'] };
         let pets = [];
 
         before(function () {
@@ -58,15 +57,14 @@ describe('Create combinations with', function () {
         })
 
         it('Generated 4 possibilities for a pet', function () {
-            let expected_pets = [{ childs: children }, { childs: "" }, { childs: [] }, { childs: null }];
+            let expected_pets = [{ childs: ['Max', 'Deb'] }, { childs: "" }, { childs: [] }, { childs: null }];
             expect(pets).to.be.an('array').and.to.have.lengthOf(4)
             expect(pets).to.deep.equal(expected_pets)
         })
     })
 
     describe('only one date attribute', function () {
-        const now = new Date();
-        var pet = { birthday: now };
+        var pet = { birthday: "2018-10-17T13:34:15.226Z" };
         let pets = [];
 
         before(function () {
@@ -74,7 +72,7 @@ describe('Create combinations with', function () {
         })
 
         it('Generated 3 possibilities for a pet', function () {
-            let expected_pets = [{ birthday: now }, { birthday: "" }, { birthday: null }];
+            let expected_pets = [{ birthday: "2018-10-17T13:34:15.226Z" }, { birthday: "" }, { birthday: null }];
             expect(pets).to.be.an('array').and.to.have.lengthOf(3)
             expect(pets).to.deep.equal(expected_pets)
         })
@@ -96,14 +94,12 @@ describe('Create combinations with', function () {
     })
 
     describe('several different attributes', function () {
-        const children = ['Max', 'Deb'];
-        let now = new Date(1574005419000);
         var pet = {
             name: "Dogo",
             age: 2,
             death: false,
-            birthday: now,
-            childs: children,
+            birthday: "2018-10-17T13:34:15.226Z",
+            childs: ['Max', 'Deb'],
             custom: { color: 'black' }
         };
         let pets = [];

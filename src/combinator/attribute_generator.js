@@ -5,12 +5,18 @@ const obj_possibilities = ["", {}, null]
 const date_possibilities = ["", null]
 const array_possibilities = ["", [], null]
 
+const timezoneFormats = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/; //2018-10-17T13:34:15.226Z
+
+function stringIsADateFormat(string) {
+    if (string.match(timezoneFormats)) {
+        return true;
+    }
+    return false
+}
+
 function getType(attr) {
     if (typeof attr.__proto__.sort === 'function') {
         return 'array'
-    }
-    else if (typeof attr.__proto__.getMonth === 'function') {
-        return 'date'
     }
     else {
         return 'object'
@@ -24,13 +30,10 @@ function iterationCopy(src) {
             if (typeof (src[prop]) === 'object') {
                 switch (getType(src[prop])) {
                     case 'array':
-                        target[prop] = prop.slice()
+                        target[prop] = src[prop].slice()
                         break
-                    case 'date':
-                        target[prop] = prop.name
-                        break;
-                    case 'object':
-                        iterationCopy(src[prop])
+                    default:
+                        target[prop] = iterationCopy(src[prop])
                         break;
                 }
             } else {
@@ -48,7 +51,9 @@ changer = (obj) => {
         let possibilities;
         switch (typeof obj[attr]) {
             case 'string':
-                possibilities = string_possibilities;
+                stringIsADateFormat(obj[attr]) ?
+                    possibilities = date_possibilities :
+                    possibilities = string_possibilities;
                 break;
             case 'number':
                 possibilities = number_possibilities;
@@ -61,9 +66,6 @@ changer = (obj) => {
                     case 'array':
                         possibilities = array_possibilities;
                         break
-                    case 'date':
-                        possibilities = date_possibilities;
-                        break;
                     default:
                         possibilities = obj_possibilities;
                         break;
@@ -79,4 +81,5 @@ changer = (obj) => {
     return generated_objects;
 }
 
-module.exports.changer = changer; 
+module.exports.changer = changer;
+module.exports.stringIsADateFormat = stringIsADateFormat;
