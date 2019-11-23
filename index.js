@@ -1,12 +1,7 @@
-const generator = require("src/combinator/object_generator.js").generator;
-var pet = {
-	name: "Dogo",
-	age: 2,
-	death: false,
-	birthday: "2018-10-17T13:34:15.226Z",
-	childs: ['Max', 'Deb'],
-	custom: { color: 'black' }
-}
 
-var arr = generator(pet);
-console.log(arr)
+/**
+ * Function to generate combinations of objects.
+ * 
+ * @param {Object} jsonObject Object on which it will combinations will be generated  
+ */
+const generator = require("src/combinator/object_generator.js").generator;
