@@ -1,7 +1,7 @@
 {
 	"name": "combinatory_testing",
-	"version": "1.0.0",
-	"description": "Generator of limit cases for testing objects",
+	"version": "0.4.0",
+	"description": "Generator of limit cases to testing objects",
 	"main": "index.js",
 	"directories": {
 		"test": "test"
