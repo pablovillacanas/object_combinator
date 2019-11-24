@@ -1,4 +1,4 @@
-const isADate = require("../src/combinator/object_generator.js").stringIsADateFormat
+const isADate = require("../src/utils/utils.js").stringIsADateFormat
 var expect = require('chai').expect
 
 describe('Get different date formats as attribute', function () {
